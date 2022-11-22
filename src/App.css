@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.App img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 5rem;
+  object-fit: cover;
+}
+
+
+.App table{
+  width: 100%;
+}
+
+
+.App button {
+  margin: 2rem;
+}
