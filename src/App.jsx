@@ -5,6 +5,8 @@ import { useLayoutEffect, useState } from "react";
 
 function App() {
   const [contacts, setContacts] = useState(Contacts.slice(4,9));
+  const [popularitySorted, setPopularity] = useState(true);
+  const [nameSorted, setName] = useState(true);
 
   function getRandomContact() {
     const remainingContacts = [...Contacts].filter(x => !contacts.includes(x))
@@ -17,13 +19,25 @@ function App() {
 
   function sortPopularity(){
     const copy = [...contacts]
-    copy.sort((a, b) => a.popularity - b.popularity)
+    if (popularitySorted){
+      copy.sort((a, b) => a.popularity - b.popularity)
+      setPopularity(false)
+    } else {
+      copy.sort((a, b) => b.popularity - a.popularity)
+      setPopularity(true)
+    }
     setContacts(copy)
   }
 
   function sortName(){
     const copy = [...contacts]
-    copy.sort((a,b) => a.name.localeCompare(b.name))
+    if (nameSorted){
+      copy.sort((a,b) => a.name.localeCompare(b.name))
+      setName(false)
+    } else {
+      copy.sort((a,b) => b.name.localeCompare(a.name))
+      setName(true)
+    }
     setContacts(copy)
   }
 
